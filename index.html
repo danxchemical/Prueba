@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SubliMarker - Cuentas Premium</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5dc;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #f5f5dc 0%, #e6e6d1 100%);
+            padding: 80px 20px;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo-container {
+            margin-bottom: 40px;
+        }
+
+        .logo-placeholder {
+            width: 200px;
+            height: 200px;
+            background-color: #333;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #f5f5dc;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin: 30px 0 20px 0;
+            color: #333;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .hero p {
+            font-size: 1.3em;
+            max-width: 600px;
+            margin: 0 auto;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            background-color: #333;
+            color: #f5f5dc;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background-color: #555;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Catalog Section */
+        .catalog-section {
+            padding: 80px 20px;
+            background-color: #f5f5dc;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 50px;
+            color: #333;
+        }
+
+        .catalog-container {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 30px;
+            min-height: 600px;
+        }
+
+        /* Filters */
+        .filters {
+            background-color: #fff;
+            padding: 30px 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            height: fit-content;
+        }
+
+        .filter-title {
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+        }
+
+        .filter-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            margin-bottom: 10px;
+            background-color: #f5f5dc;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .filter-item:hover {
+            background-color: #e6e6d1;
+            transform: translateX(5px);
+        }
+
+        .filter-item.active {
+            background-color: #333;
+            color: #f5f5dc;
+            border-color: #333;
+        }
+
+        .filter-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #333;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #f5f5dc;
+            margin-right: 15px;
+            font-size: 1.2em;
+        }
+
+        .filter-item.active .filter-icon {
+            background-color: #f5f5dc;
+            color: #333;
+        }
+
+        /* Products */
+        .products-container {
+            background-color: #fff;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .product-card {
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .product-image {
+            width: 60px;
+            height: 60px;
+            background-color: #333;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #f5f5dc;
+            font-weight: bold;
+        }
+
+        .product-title {
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .product-description {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 0.9em;
+        }
+
+        .product-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background-color: #333;
+            color: #f5f5dc;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background-color: #555;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: #333;
+            padding: 8px 15px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background-color: #333;
+            color: #f5f5dc;
+        }
+
+        /* Reviews Section */
+        .reviews-section {
+            padding: 80px 20px;
+            background-color: #fff;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .review-card {
+            background-color: #f5f5dc;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stars {
+            color: #ffd700;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .review-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .reviewer-name {
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #333;
+            color: #f5f5dc;
+            padding: 50px 20px 30px 20px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            color: #f5f5dc;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: #f5f5dc;
+            color: #333;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background-color: #e6e6d1;
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #555;
+            color: #ccc;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+
+            .hero p {
+                font-size: 1.1em;
+            }
+
+            .catalog-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .filters {
+                order: 2;
+                padding: 20px;
+            }
+
+            .products-container {
+                order: 1;
+                max-height: 400px;
+            }
+
+            .filter-item {
+                padding: 10px;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .logo-placeholder {
+                width: 150px;
+                height: 150px;
+                font-size: 18px;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="logo-container">
+            <div class="logo-placeholder">LOGO AQUÍ</div>
+        </div>
+        <h1>SubliMarker</h1>
+        <p>Tu tienda de confianza para cuentas premium. Vendemos cuentas de CapCut Pro, ChatGPT Pro, Spotify Premium y muchas más plataformas digitales al mejor precio del mercado.</p>
+        <a href="#catalog" class="cta-button">Ver Catálogo</a>
+    </section>
+
+    <!-- Catalog Section -->
+    <section class="catalog-section" id="catalog">
+        <div class="container">
+            <h2 class="section-title">Nuestro Catálogo</h2>
+            <div class="catalog-container">
+                <!-- Filters -->
+                <div class="filters">
+                    <h3 class="filter-title">Categorías</h3>
+                    <div class="filter-item active" data-filter="all">
+                        <div class="filter-icon"><i class="fas fa-th-large"></i></div>
+                        <span>Todos</span>
+                    </div>
+                    <div class="filter-item" data-filter="spotify">
+                        <div class="filter-icon"><i class="fab fa-spotify"></i></div>
+                        <span>Spotify</span>
+                    </div>
+                    <div class="filter-item" data-filter="capcut">
+                        <div class="filter-icon"><i class="fas fa-video"></i></div>
+                        <span>CapCut</span>
+                    </div>
+                    <div class="filter-item" data-filter="chatgpt">
+                        <div class="filter-icon"><i class="fas fa-robot"></i></div>
+                        <span>ChatGPT</span>
+                    </div>
+                    <div class="filter-item" data-filter="netflix">
+                        <div class="filter-icon"><i class="fas fa-film"></i></div>
+                        <span>Netflix</span>
+                    </div>
+                    <div class="filter-item" data-filter="canva">
+                        <div class="filter-icon"><i class="fas fa-palette"></i></div>
+                        <span>Canva</span>
+                    </div>
+                </div>
+
+                <!-- Products -->
+                <div class="products-container">
+                    <div class="products-grid" id="products-grid">
+                        <!-- Spotify Products -->
+                        <div class="product-card" data-category="spotify">
+                            <div class="product-image">SP1</div>
+                            <div class="product-title">Spotify Premium - Producto A</div>
+                            <div class="product-description">Cuenta Spotify Premium con acceso completo por 1 mes. Sin anuncios, descargas offline.</div>
+                            <div class="product-buttons">
+                                <a href="#" class="btn-primary">Comprar Ahora</a>
+                                <a href="https://wa.me/1234567890" class="btn-secondary">Otros Métodos</a>
+                            </div>
+                        </div>
+
+                        <div class="product-card" data-category="spotify">
+                            <div class="product-image">SP2</div>
+                            <div class="product-title">Spotify Premium - Producto B</div>
+                            <div class="product-description">Cuenta Spotify Premium con acceso completo por 3 meses. Calidad HD, sin límites.</div>
+                            <div class="product-buttons">
+                                <a href="#" class="btn-primary">Comprar Ahora</a>
+                                <a href="https://wa.me/1234567890" class="btn-secondary">Otros Métodos</a>
+                            </div>
+                        </div>
+
+                        <div class="product-card" data-category="spotify">
+                            <div class="product-image">SP3</div>
+                            <div class="product-title">Spotify Premium - Producto C</div>
+                            <div class="product-description">Cuenta Spotify Premium familiar. Hasta 6 usuarios, 6 meses de duración.</div>
+                            <div class="product-buttons">
+                                <a href="#" class="btn-primary">Comprar Ahora</a>
+                                <a href="https://wa.me/1234567890" class="btn-secondary">Otros Métodos</a>
+                            </div>
+                        </div>
+
+                        <!-- CapCut Products -->
+                        <div class="product-card" data-category="capcut">
+                            <div class="product-image">CC1</div>
+                            <div class="product-title">CapCut Pro - Producto A</div>
+                            <div class="product-description">CapCut Pro con todas las funciones premium. Edición avanzada sin marcas de agua.</div>
+                            <div class="product-buttons">
+                                <a href="#" class="btn-primary">Comprar Ahora</a>
+                                <a href="https://wa.me/1234567890" class="btn-secondary">Otros Métodos</a>
+                            </div>
+                        </div>
+
+                        <div class="product-card" data-category="capcut">
+                            <div class="product-image">CC2</div>
+                            <div class="product-title">CapCut Pro - Producto B</div>
+                            <div class="product-description">CapCut Pro anual. Acceso completo a efectos, plantillas y exportación 4K.</div>
+                            <div class="product-buttons">
+                                <a href="#" class="btn-primary">Comprar Ahora</a>
+                                <a href="https://wa.me/1234567890" class="btn-secondary">Otros Métodos</a>
+                            </div>
+                        </div>
+
+                        <div class="product-card" data-category="capcut">
+                            <div class="product-image">CC3</div>
+                            <div class="product-title">CapCut Pro - Producto C</div>
+                            <div class="product-description">CapCut Pro mensual. Perfecto para proyectos específicos y pruebas.</div>
+                            <div class="product-buttons">
+                                <a href="#" class="btn-primary">Comprar Ahora</a>
+                                <a href="https://wa.me/1234567890" class="btn-secondary">Otros Métodos</a>
+                            </div>
+                        </div>
+
+                        <!-- ChatGPT Products -->
+                        <div class="product-card" data-category="chatgpt">
+                            <div class="product-image">AI1</div>
+                            <div class="product-title">ChatGPT Plus - Producto A</div>
+                            <div class="product-description">ChatGPT Plus con GPT-4. Respuestas más rápidas y acceso prioritario.</div>
+                            <div class="product-buttons">
+                                <a href="#" class="btn-primary">Comprar Ahora</a>
+                                <a href="https://wa.me/1234567890" class="btn-secondary">Otros Métodos</a>
+                            </div>
+                        </div>
+
+                        <div class="product-card" data-category="chatgpt">
+                            <div class="product-image">AI2</div>
+                            <div class="product-title">ChatGPT Team - Producto B</div>
+                            <div class="product-description">ChatGPT para equipos. Colaboración avanzada y workspace compartido.</div>
+                            <div class="product-buttons">
+                                <a href="#" class="btn-primary">Comprar Ahora</a>
+                                <a href="https://wa.me/1234567890" class="btn-secondary">Otros Métodos</a>
+                            </div>
+                        </div>
+
+                        <div class="product-card" data-category="chatgpt">
+                            <div class="product-image">AI3</div>
+                            <div class="product-title">ChatGPT Pro - Producto C</div>
+                            <div class="product-description">ChatGPT versión profesional. Máximo rendimiento y funciones exclusivas.</div>
+                            <div class="product-buttons">
+                                <a href="#" class="btn-primary">Comprar Ahora</a>
+                                <a href="https://wa.me/1234567890" class="btn-secondary">Otros Métodos</a>
+                            </div>
+                        </div>
+
+                        <!-- Netflix Products -->
+                        <div class="product-card" data-category="netflix">
+                            <div class="product-image">NF1</div>
+                            <div class="product-title">Netflix Premium - Producto A</div>
+                            <div class="product-description">Netflix Premium UHD. 4 pantallas simultáneas, calidad 4K disponible.</div>
+                            <div class="product-buttons">
+                                <a href="#" class="btn-primary">Comprar Ahora</a>
+                                <a href="https://wa.me/1234567890" class="btn-secondary">Otros Métodos</a>
+                            </div>
+                        </div>
+
+                        <!-- Canva Products -->
+                        <div class="product-card" data-category="canva">
+                            <div class="product-image">CV1</div>
+                            <div class="product-title">Canva Pro - Producto A</div>
+                            <div class="product-description">Canva Pro con acceso a plantillas premium, elementos y funciones avanzadas.</div>
+                            <div class="product-buttons">
+                                <a href="#" class="btn-primary">Comprar Ahora</a>
+                                <a href="https://wa.me/1234567890" class="btn-secondary">Otros Métodos</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews-section">
+        <div class="container">
+            <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">"Excelente servicio, muy rápida la entrega de la cuenta. La calidad es perfecta y el precio muy competitivo. Totalmente recomendado."</p>
+                    <p class="reviewer-name">- María González</p>
+                </div>
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">"Compré una cuenta de Spotify Premium y funciona perfecto. El proceso de compra fue muy sencillo y el soporte excelente."</p>
+                    <p class="reviewer-name">- Carlos Rodríguez</p>
+                </div>
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">"Llevo 3 meses usando las cuentas que compré aquí y todo funciona de maravilla. Precios justos y servicio confiable."</p>
+                    <p class="reviewer-name">- Ana López</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>SubliMarker</h3>
+                <p>Tu tienda de confianza para cuentas premium de las mejores plataformas digitales.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://wa.me/1234567890" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Atención al Cliente</h3>
+                <p><strong>Horarios:</strong></p>
+                <p>Lunes a Viernes: 9:00 AM - 8:00 PM</p>
+                <p>Sábados: 10:00 AM - 6:00 PM</p>
+                <p>Domingos: 2:00 PM - 6:00 PM</p>
+                <br>
+                <a href="https://wa.me/1234567890" class="btn-primary">
+                    <i class="fab fa-whatsapp"></i> Contactar por WhatsApp
+                </a>
+            </div>
+            <div class="footer-section">
+                <h3>Información</h3>
+                <p>• Entrega inmediata</p>
+                <p>• Soporte 24/7</p>
+                <p>• Garantía de funcionamiento</p>
+                <p>• Múltiples métodos de pago</p>
+                <p>• Precios competitivos</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 SubliMarker. Todos los derechos reservados. | Una marca de Sublícolor</p>
+        </div>
+    </footer>
+
+    <script>
+        // Filter functionality
+        const filterItems = document.querySelectorAll('.filter-item');
+        const productCards = document.querySelectorAll('.product-card');
+
+        filterItems.forEach(item => {
+            item.addEventListener('click', () => {
+                // Remove active class from all filters
+                filterItems.forEach(filter => filter.classList.remove('active'));
+                // Add active class to clicked filter
+                item.classList.add('active');
+
+                const filterValue = item.getAttribute('data-filter');
+
+                productCards.forEach(card => {
+                    if (filterValue === 'all') {
+                        card.style.display = 'block';
+                    } else {
+                        if (card.getAttribute('data-category') === filterValue) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    }
+                });
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards
+        document.querySelectorAll('.product-card, .review-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Add CSS for animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
