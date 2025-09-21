@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subli Market - Cuentas Premium</title>
+    <title>Subli Market - Tu tienda de confianza para cuentas premium</title>
     <style>
         * {
             margin: 0;
@@ -12,35 +12,32 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: Arial, sans-serif;
             background-color: #f5f5dc;
-            color: #2c2c2c;
+            color: #1a1a1a;
             line-height: 1.6;
         }
 
         /* Header Section */
         .header {
             background-color: #1a1a1a;
-            padding: 2rem 0;
-            min-height: 70vh;
+            padding: 3rem 2rem;
+            min-height: 400px;
             display: flex;
             align-items: center;
         }
 
-        .header-content {
+        .header-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 3rem;
+            width: 100%;
+            display: flex;
             align-items: center;
+            gap: 3rem;
         }
 
         .logo-section {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            flex-shrink: 0;
         }
 
         .logo {
@@ -51,29 +48,30 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
             font-weight: bold;
+            font-size: 1.2rem;
             color: #1a1a1a;
         }
 
-        .brand-section {
+        .content-section {
+            flex: 1;
             color: #f5f5dc;
         }
 
-        .brand-name {
+        .header h1 {
             font-size: 3rem;
-            font-weight: bold;
             margin-bottom: 1rem;
             color: #f5f5dc;
         }
 
-        .brand-description {
+        .header p {
             font-size: 1.2rem;
             margin-bottom: 2rem;
+            max-width: 600px;
             opacity: 0.9;
         }
 
-        .buttons-container {
+        .header-buttons {
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
@@ -84,12 +82,13 @@
             border: none;
             border-radius: 8px;
             font-size: 1rem;
-            font-weight: 500;
+            font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
             text-decoration: none;
-            display: inline-block;
-            text-align: center;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
         }
 
         .btn-primary {
@@ -99,7 +98,6 @@
 
         .btn-primary:hover {
             background-color: #128C7E;
-            transform: translateY(-2px);
         }
 
         .btn-secondary {
@@ -111,228 +109,226 @@
         .btn-secondary:hover {
             background-color: #f5f5dc;
             color: #1a1a1a;
-            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1400px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+            display: flex;
+            gap: 2rem;
+        }
+
+        /* Filters */
+        .filters-sidebar {
+            width: 280px;
+            flex-shrink: 0;
+        }
+
+        .filters-mobile {
+            display: none;
+            margin-bottom: 2rem;
+        }
+
+        .filters-dropdown {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #1a1a1a;
+            border-radius: 8px;
+            background-color: white;
+            font-size: 1rem;
+        }
+
+        .filters h3 {
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+            font-size: 1.3rem;
+        }
+
+        .filter-list {
+            list-style: none;
+        }
+
+        .filter-item {
+            margin-bottom: 0.5rem;
+        }
+
+        .filter-btn {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            background: transparent;
+            border: none;
+            text-align: left;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            color: #1a1a1a;
+            font-size: 1rem;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background-color: #25D366;
+            color: white;
         }
 
         /* Products Section */
         .products-section {
-            padding: 4rem 0;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #1a1a1a;
-            font-weight: bold;
+            flex: 1;
         }
 
         .products-container {
-            display: grid;
-            grid-template-columns: 250px 1fr;
-            gap: 2rem;
-            padding: 0 2rem;
-            height: 600px;
-        }
-
-        /* Filters */
-        .filters {
-            background-color: #1a1a1a;
-            padding: 1.5rem;
+            background: white;
             border-radius: 12px;
-            height: fit-content;
-            max-height: 600px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            height: 600px;
             overflow-y: auto;
         }
 
-        .filters h3 {
-            color: #f5f5dc;
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .filter-item {
-            padding: 0.8rem 1rem;
-            margin-bottom: 0.5rem;
-            background-color: transparent;
-            color: #f5f5dc;
-            border: 1px solid #444;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: block;
-            width: 100%;
-        }
-
-        .filter-item:hover,
-        .filter-item.active {
-            background-color: #f5f5dc;
-            color: #1a1a1a;
-            border-color: #f5f5dc;
-        }
-
-        /* Mobile filters */
-        .mobile-filters {
-            display: none;
-            margin-bottom: 2rem;
-            padding: 0 2rem;
-        }
-
-        .mobile-filter-toggle {
-            background-color: #1a1a1a;
-            color: #f5f5dc;
-            padding: 1rem;
-            border-radius: 8px;
-            cursor: pointer;
-            text-align: center;
-            margin-bottom: 1rem;
-        }
-
-        .mobile-filter-content {
-            display: none;
-            background-color: #1a1a1a;
-            padding: 1rem;
-            border-radius: 8px;
-            max-height: 200px;
-            overflow-y: auto;
-        }
-
-        .mobile-filter-content.show {
-            display: block;
-        }
-
-        /* Products Grid */
         .products-grid {
-            background-color: #fff;
-            border-radius: 12px;
-            padding: 1.5rem;
-            height: 600px;
-            overflow-y: auto;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
         }
 
-        .products-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1.5rem;
+        .products-grid.two-columns {
+            grid-template-columns: repeat(2, 1fr);
         }
 
         .product-card {
-            background-color: #f8f8f8;
-            border-radius: 10px;
+            background: white;
+            border-radius: 12px;
             padding: 1.5rem;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 2px solid transparent;
+            border: 2px solid #f0f0f0;
+            transition: all 0.3s ease;
+            min-height: 320px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
         }
 
         .product-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-            border-color: #1a1a1a;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            border-color: #25D366;
         }
 
-        .product-image {
-            width: 80px;
-            height: 80px;
-            background-color: #e0e0e0;
+        .product-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-logo {
+            width: 50px;
+            height: 50px;
+            background-color: #e74c3c;
             border-radius: 8px;
-            margin: 0 auto 1rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.9rem;
-            color: #666;
+            font-size: 0.8rem;
+            color: white;
+            font-weight: bold;
         }
 
         .product-name {
-            font-size: 1.1rem;
+            font-size: 1.3rem;
             font-weight: 600;
-            margin-bottom: 0.5rem;
             color: #1a1a1a;
         }
 
         .product-description {
-            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
             color: #666;
-            margin-bottom: 0.8rem;
-            line-height: 1.4;
+            flex: 1;
         }
 
-        .product-price {
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: #25D366;
+        .product-footer {
+            margin-top: auto;
+        }
+
+        .pricing-box {
+            background-color: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
             margin-bottom: 1rem;
         }
 
-        .product-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
+        .price {
+            font-weight: 600;
+            font-size: 1.1rem;
         }
 
-        .product-btn {
-            padding: 0.8rem 1rem;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 0.85rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-            text-align: center;
+        .price.usd {
+            color: #25D366;
         }
 
-        .product-btn-primary {
-            background-color: #1a1a1a;
-            color: #f5f5dc;
-        }
-
-        .product-btn-primary:hover {
-            background-color: #333;
-            transform: translateY(-1px);
-        }
-
-        .product-btn-secondary {
-            background-color: transparent;
+        .price.pen {
             color: #1a1a1a;
-            border: 1px solid #1a1a1a;
         }
 
-        .product-btn-secondary:hover {
-            background-color: #1a1a1a;
-            color: #f5f5dc;
-            transform: translateY(-1px);
+        .order-btn {
+            width: 100%;
+            background-color: #25D366;
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .order-btn:hover {
+            background-color: #128C7E;
+        }
+
+        .stock-indicator {
+            background-color: #dc3545;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            margin-top: 0.5rem;
+            width: fit-content;
         }
 
         /* Reviews Section */
         .reviews-section {
             background-color: #1a1a1a;
-            padding: 4rem 0;
-            margin-top: 2rem;
+            padding: 4rem 2rem;
+            margin-top: 4rem;
         }
 
         .reviews-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
         }
 
         .reviews-title {
             text-align: center;
             font-size: 2.5rem;
-            margin-bottom: 3rem;
             color: #f5f5dc;
-            font-weight: bold;
+            margin-bottom: 3rem;
         }
 
         .reviews-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
         }
 
@@ -340,11 +336,10 @@
             background-color: #f5f5dc;
             padding: 2rem;
             border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        .review-stars {
-            color: #FFD700;
+        .stars {
+            color: #ffd700;
             font-size: 1.2rem;
             margin-bottom: 1rem;
         }
@@ -352,11 +347,11 @@
         .review-text {
             font-style: italic;
             margin-bottom: 1rem;
-            color: #333;
+            color: #1a1a1a;
         }
 
         .review-author {
-            font-weight: bold;
+            font-weight: 600;
             color: #1a1a1a;
         }
 
@@ -364,331 +359,245 @@
         .footer {
             background-color: #0f0f0f;
             color: #f5f5dc;
-            padding: 3rem 0 1rem;
+            padding: 4rem 2rem 2rem;
         }
 
         .footer-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
         }
 
-        .footer-content {
+        .footer-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
             margin-bottom: 2rem;
         }
 
-        .footer-section h3 {
-            margin-bottom: 1rem;
-            color: #f5f5dc;
+        .footer-column h4 {
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            color: #25D366;
         }
 
-        .footer-section p,
-        .footer-section li {
+        .footer-column p,
+        .footer-column a {
             margin-bottom: 0.5rem;
-            opacity: 0.8;
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section a {
             color: #f5f5dc;
             text-decoration: none;
-            transition: opacity 0.3s ease;
+            opacity: 0.9;
         }
 
-        .footer-section a:hover {
-            opacity: 0.7;
+        .footer-column a:hover {
+            opacity: 1;
+            color: #25D366;
         }
 
-        .social-links {
+        .social-icons {
             display: flex;
             gap: 1rem;
             margin-top: 1rem;
         }
 
-        .social-link {
+        .social-icon {
             width: 40px;
             height: 40px;
-            background-color: #f5f5dc;
-            color: #1a1a1a;
-            border-radius: 50%;
+            background-color: #25D366;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-decoration: none;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
         }
 
-        .social-link:hover {
-            transform: scale(1.1);
+        .social-icon:hover {
+            background-color: #128C7E;
         }
 
         .footer-bottom {
-            border-top: 1px solid #333;
-            padding-top: 1rem;
             text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
             opacity: 0.7;
         }
 
-        /* Responsive Design */
+        /* Mobile Responsive */
         @media (max-width: 768px) {
-            .header-content {
-                grid-template-columns: 1fr;
+            .header-container {
+                flex-direction: column;
                 text-align: center;
                 gap: 2rem;
             }
 
-            .brand-name {
-                font-size: 2.5rem;
+            .header h1 {
+                font-size: 2rem;
             }
 
-            .products-container {
-                grid-template-columns: 1fr;
-                height: auto;
+            .main-content {
+                flex-direction: column;
+                gap: 1rem;
             }
 
-            .filters {
+            .filters-sidebar {
                 display: none;
             }
 
-            .mobile-filters {
+            .filters-mobile {
                 display: block;
             }
 
             .products-grid {
-                height: auto;
-                max-height: 600px;
+                grid-template-columns: 1fr;
             }
 
-            .buttons-container {
+            .products-grid.two-columns {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .header-buttons {
                 justify-content: center;
-            }
-
-            .btn {
-                flex: 1;
-                min-width: 200px;
             }
         }
 
         @media (max-width: 480px) {
-            .brand-name {
-                font-size: 2rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .products-list {
+            .footer-grid {
                 grid-template-columns: 1fr;
             }
 
-            .btn {
-                min-width: auto;
-                width: 100%;
+            .header {
+                padding: 2rem 1rem;
             }
+
+            .main-content {
+                padding: 0 1rem;
+            }
+        }
+
+        /* WhatsApp Icon */
+        .whatsapp-icon {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        /* Stock Icon */
+        .stock-icon {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
         }
     </style>
 </head>
 <body>
     <!-- Header Section -->
     <header class="header">
-        <div class="header-content">
+        <div class="header-container">
             <div class="logo-section">
                 <div class="logo">LOGO</div>
             </div>
-            <div class="brand-section">
-                <h1 class="brand-name">Subli Market</h1>
-                <p class="brand-description">
-                    Tu tienda de confianza para cuentas premium. Ofrecemos las mejores suscripciones a precios increíbles con garantía total y soporte 24/7.
-                </p>
-                <div class="buttons-container">
-                    <a href="#" class="btn btn-primary">Comunidad de WhatsApp</a>
+            <div class="content-section">
+                <h1>Subli Market</h1>
+                <p>Tu tienda de confianza para cuentas premium. Ofrecemos las mejores suscripciones a precios increíbles con garantía total y soporte 24/7.</p>
+                <div class="header-buttons">
+                    <a href="#" class="btn btn-primary">
+                        <svg class="whatsapp-icon" viewBox="0 0 24 24">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893A11.821 11.821 0 0020.893 3.106"/>
+                        </svg>
+                        Comunidad de WhatsApp
+                    </a>
                     <a href="#" class="btn btn-secondary">Soporte y Ventas</a>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Products Section -->
-    <section class="products-section">
-        <h2 class="section-title">Nuestros Productos</h2>
-        
-        <!-- Mobile Filters -->
-        <div class="mobile-filters">
-            <div class="mobile-filter-toggle" onclick="toggleMobileFilters()">
-                Filtrar Productos ▼
-            </div>
-            <div class="mobile-filter-content" id="mobileFilters">
-                <div class="filter-item active" onclick="filterProducts('all')">Todos los Productos</div>
-                <div class="filter-item" onclick="filterProducts('streaming')">Streaming</div>
-                <div class="filter-item" onclick="filterProducts('ai')">Inteligencia Artificial</div>
-                <div class="filter-item" onclick="filterProducts('design')">Diseño</div>
-                <div class="filter-item" onclick="filterProducts('office')">Oficina</div>
-                <div class="filter-item" onclick="filterProducts('gaming')">Gaming</div>
-            </div>
-        </div>
-
-        <div class="products-container">
-            <!-- Desktop Filters -->
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Filters Sidebar -->
+        <aside class="filters-sidebar">
             <div class="filters">
                 <h3>Categorías</h3>
-                <div class="filter-item active" onclick="filterProducts('all')">Todos los Productos</div>
-                <div class="filter-item" onclick="filterProducts('streaming')">Streaming</div>
-                <div class="filter-item" onclick="filterProducts('ai')">Inteligencia Artificial</div>
-                <div class="filter-item" onclick="filterProducts('design')">Diseño</div>
-                <div class="filter-item" onclick="filterProducts('office')">Oficina</div>
-                <div class="filter-item" onclick="filterProducts('gaming')">Gaming</div>
+                <ul class="filter-list">
+                    <li class="filter-item">
+                        <button class="filter-btn active" data-category="all">Todos los Productos</button>
+                    </li>
+                    <li class="filter-item">
+                        <button class="filter-btn" data-category="chatgpt">ChatGPT Plus</button>
+                    </li>
+                    <li class="filter-item">
+                        <button class="filter-btn" data-category="canva">Canva Pro</button>
+                    </li>
+                    <li class="filter-item">
+                        <button class="filter-btn" data-category="perplexity">Perplexity Pro</button>
+                    </li>
+                    <li class="filter-item">
+                        <button class="filter-btn" data-category="capcut">CapCut Pro</button>
+                    </li>
+                    <li class="filter-item">
+                        <button class="filter-btn" data-category="gemini">Gemini Pro</button>
+                    </li>
+                    <li class="filter-item">
+                        <button class="filter-btn" data-category="quillbot">QuillBot Premium</button>
+                    </li>
+                    <li class="filter-item">
+                        <button class="filter-btn" data-category="turnitin">Turnitin</button>
+                    </li>
+                    <li class="filter-item">
+                        <button class="filter-btn" data-category="gamma">Gamma</button>
+                    </li>
+                    <li class="filter-item">
+                        <button class="filter-btn" data-category="leonardo">Leonardo IA</button>
+                    </li>
+                    <li class="filter-item">
+                        <button class="filter-btn" data-category="bot">Bot Seguidores</button>
+                    </li>
+                    <li class="filter-item">
+                        <button class="filter-btn" data-category="freepik">FreePik</button>
+                    </li>
+                    <li class="filter-item">
+                        <button class="filter-btn" data-category="writehuman">WriteHuman AI</button>
+                    </li>
+                    <li class="filter-item">
+                        <button class="filter-btn" data-category="scribd">Scribd</button>
+                    </li>
+                </ul>
             </div>
+        </aside>
 
-            <!-- Products Grid -->
-            <div class="products-grid">
-                <div class="products-list" id="productsList">
-                    <!-- Streaming Products -->
-                    <div class="product-card" data-category="streaming">
-                        <div class="product-image">Imagen</div>
-                        <h3 class="product-name">Spotify Premium</h3>
-                        <p class="product-description">Música sin límites, sin anuncios y descarga offline. Acceso completo a la biblioteca musical más grande.</p>
-                        <p class="product-price">$5.99</p>
-                        <div class="product-buttons">
-                            <a href="comprar-spotify.html" class="product-btn product-btn-primary">Comprar Ahora</a>
-                            <a href="metodos-pago.html" class="product-btn product-btn-secondary">Consultar métodos de pago</a>
-                        </div>
-                    </div>
-                    
-                    <div class="product-card" data-category="streaming">
-                        <div class="product-image">Imagen</div>
-                        <h3 class="product-name">Netflix Premium</h3>
-                        <p class="product-description">Streaming en 4K, múltiples pantallas simultáneas. Contenido exclusivo y sin interrupciones.</p>
-                        <p class="product-price">$8.99</p>
-                        <div class="product-buttons">
-                            <a href="comprar-netflix.html" class="product-btn product-btn-primary">Comprar Ahora</a>
-                            <a href="metodos-pago.html" class="product-btn product-btn-secondary">Consultar métodos de pago</a>
-                        </div>
-                    </div>
+        <!-- Mobile Filters -->
+        <div class="filters-mobile">
+            <select class="filters-dropdown" id="mobile-filter">
+                <option value="all">Todos los Productos</option>
+                <option value="chatgpt">ChatGPT Plus</option>
+                <option value="canva">Canva Pro</option>
+                <option value="perplexity">Perplexity Pro</option>
+                <option value="capcut">CapCut Pro</option>
+                <option value="gemini">Gemini Pro</option>
+                <option value="quillbot">QuillBot Premium</option>
+                <option value="turnitin">Turnitin</option>
+                <option value="gamma">Gamma</option>
+                <option value="leonardo">Leonardo IA</option>
+                <option value="bot">Bot Seguidores</option>
+                <option value="freepik">FreePik</option>
+                <option value="writehuman">WriteHuman AI</option>
+                <option value="scribd">Scribd</option>
+            </select>
+        </div>
 
-                    <div class="product-card" data-category="streaming">
-                        <div class="product-image">Imagen</div>
-                        <h3 class="product-name">YouTube Premium</h3>
-                        <p class="product-description">Videos sin anuncios, reproducción en segundo plano y acceso a YouTube Music incluido.</p>
-                        <p class="product-price">$4.99</p>
-                        <div class="product-buttons">
-                            <a href="comprar-youtube.html" class="product-btn product-btn-primary">Comprar Ahora</a>
-                            <a href="metodos-pago.html" class="product-btn product-btn-secondary">Consultar métodos de pago</a>
-                        </div>
-                    </div>
-
-                    <!-- AI Products -->
-                    <div class="product-card" data-category="ai">
-                        <div class="product-image">Imagen</div>
-                        <h3 class="product-name">ChatGPT Plus</h3>
-                        <p class="product-description">Acceso prioritario, respuestas más rápidas y funciones avanzadas de la IA más popular.</p>
-                        <p class="product-price">$12.99</p>
-                        <div class="product-buttons">
-                            <a href="comprar-chatgpt.html" class="product-btn product-btn-primary">Comprar Ahora</a>
-                            <a href="metodos-pago.html" class="product-btn product-btn-secondary">Consultar métodos de pago</a>
-                        </div>
-                    </div>
-
-                    <div class="product-card" data-category="ai">
-                        <div class="product-image">Imagen</div>
-                        <h3 class="product-name">Claude Pro</h3>
-                        <p class="product-description">Mayor límite de conversaciones, acceso prioritario y funciones avanzadas de Claude AI.</p>
-                        <p class="product-price">$15.99</p>
-                        <div class="product-buttons">
-                            <a href="comprar-claude.html" class="product-btn product-btn-primary">Comprar Ahora</a>
-                            <a href="metodos-pago.html" class="product-btn product-btn-secondary">Consultar métodos de pago</a>
-                        </div>
-                    </div>
-
-                    <!-- Design Products -->
-                    <div class="product-card" data-category="design">
-                        <div class="product-image">Imagen</div>
-                        <h3 class="product-name">Canva Premium</h3>
-                        <p class="product-description">Plantillas premium, elementos exclusivos, fondos removidos y colaboración en equipo.</p>
-                        <p class="product-price">$7.99</p>
-                        <div class="product-buttons">
-                            <a href="comprar-canva.html" class="product-btn product-btn-primary">Comprar Ahora</a>
-                            <a href="metodos-pago.html" class="product-btn product-btn-secondary">Consultar métodos de pago</a>
-                        </div>
-                    </div>
-
-                    <div class="product-card" data-category="design">
-                        <div class="product-image">Imagen</div>
-                        <h3 class="product-name">Adobe Creative Cloud</h3>
-                        <p class="product-description">Suite completa: Photoshop, Illustrator, Premiere Pro y más. Herramientas profesionales de diseño.</p>
-                        <p class="product-price">$19.99</p>
-                        <div class="product-buttons">
-                            <a href="comprar-adobe.html" class="product-btn product-btn-primary">Comprar Ahora</a>
-                            <a href="metodos-pago.html" class="product-btn product-btn-secondary">Consultar métodos de pago</a>
-                        </div>
-                    </div>
-
-                    <div class="product-card" data-category="design">
-                        <div class="product-image">Imagen</div>
-                        <h3 class="product-name">Figma Professional</h3>
-                        <p class="product-description">Colaboración avanzada, versiones ilimitadas y componentes profesionales para diseño UI/UX.</p>
-                        <p class="product-price">$9.99</p>
-                        <div class="product-buttons">
-                            <a href="comprar-figma.html" class="product-btn product-btn-primary">Comprar Ahora</a>
-                            <a href="metodos-pago.html" class="product-btn product-btn-secondary">Consultar métodos de pago</a>
-                        </div>
-                    </div>
-
-                    <!-- Office Products -->
-                    <div class="product-card" data-category="office">
-                        <div class="product-image">Imagen</div>
-                        <h3 class="product-name">Microsoft Office 365</h3>
-                        <p class="product-description">Word, Excel, PowerPoint, Outlook y más. 1TB OneDrive incluido para almacenamiento.</p>
-                        <p class="product-price">$6.99</p>
-                        <div class="product-buttons">
-                            <a href="comprar-office.html" class="product-btn product-btn-primary">Comprar Ahora</a>
-                            <a href="metodos-pago.html" class="product-btn product-btn-secondary">Consultar métodos de pago</a>
-                        </div>
-                    </div>
-
-                    <div class="product-card" data-category="office">
-                        <div class="product-image">Imagen</div>
-                        <h3 class="product-name">Google Workspace</h3>
-                        <p class="product-description">Gmail empresarial, Drive, Docs, Sheets y Meet. Colaboración en tiempo real y almacenamiento.</p>
-                        <p class="product-price">$5.99</p>
-                        <div class="product-buttons">
-                            <a href="comprar-workspace.html" class="product-btn product-btn-primary">Comprar Ahora</a>
-                            <a href="metodos-pago.html" class="product-btn product-btn-secondary">Consultar métodos de pago</a>
-                        </div>
-                    </div>
-
-                    <!-- Gaming Products -->
-                    <div class="product-card" data-category="gaming">
-                        <div class="product-image">Imagen</div>
-                        <h3 class="product-name">Steam Wallet</h3>
-                        <p class="product-description">Saldo para comprar juegos, DLC y contenido en la plataforma de gaming más grande del mundo.</p>
-                        <p class="product-price">$10.99</p>
-                        <div class="product-buttons">
-                            <a href="comprar-steam.html" class="product-btn product-btn-primary">Comprar Ahora</a>
-                            <a href="metodos-pago.html" class="product-btn product-btn-secondary">Consultar métodos de pago</a>
-                        </div>
-                    </div>
-
-                    <div class="product-card" data-category="gaming">
-                        <div class="product-image">Imagen</div>
-                        <h3 class="product-name">PlayStation Plus</h3>
-                        <p class="product-description">Juegos gratuitos mensuales, descuentos exclusivos y acceso a multijugador online.</p>
-                        <p class="product-price">$8.99</p>
-                        <div class="product-buttons">
-                            <a href="comprar-psplus.html" class="product-btn product-btn-primary">Comprar Ahora</a>
-                            <a href="metodos-pago.html" class="product-btn product-btn-secondary">Consultar métodos de pago</a>
-                        </div>
-                    </div>
+        <!-- Products Section -->
+        <section class="products-section">
+            <div class="products-container">
+                <div class="products-grid" id="products-grid">
+                    <!-- Products will be dynamically inserted here -->
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- Reviews Section -->
     <section class="reviews-section">
@@ -696,26 +605,23 @@
             <h2 class="reviews-title">Lo que dicen nuestros clientes</h2>
             <div class="reviews-grid">
                 <div class="review-card">
-                    <div class="review-stars">★★★★★</div>
-                    <p class="review-text">"Excelente servicio, compré mi cuenta de Spotify Premium y funciona perfectamente. El soporte es muy rápido y confiable."</p>
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">"Excelente servicio, compré mi cuenta de ChatGPT Plus y funciona perfectamente. El soporte es muy rápido y confiable."</p>
                     <p class="review-author">- María González</p>
                 </div>
-                
                 <div class="review-card">
-                    <div class="review-stars">★★★★★</div>
+                    <div class="stars">★★★★★</div>
                     <p class="review-text">"Llevo 6 meses comprando aquí y nunca he tenido problemas. Precios increíbles y cuentas que duran mucho tiempo."</p>
                     <p class="review-author">- Carlos Rodríguez</p>
                 </div>
-                
                 <div class="review-card">
-                    <div class="review-stars">★★★★★</div>
+                    <div class="stars">★★★★★</div>
                     <p class="review-text">"La atención al cliente es de primera. Tuve un problema menor y lo solucionaron en menos de 30 minutos."</p>
                     <p class="review-author">- Ana Martín</p>
                 </div>
-                
                 <div class="review-card">
-                    <div class="review-stars">★★★★★</div>
-                    <p class="review-text">"Compré ChatGPT Plus y Canva Premium. Ambas cuentas funcionan perfecto. Definitivamente recomiendo Subli Market."</p>
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">"Compré Canva Pro y Leonardo IA. Ambas cuentas funcionan perfecto. Definitivamente recomiendo Subli Market."</p>
                     <p class="review-author">- Diego Fernández</p>
                 </div>
             </div>
@@ -725,51 +631,62 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Subli Market</h3>
-                    <p>Tu tienda de confianza para cuentas premium con los mejores precios del mercado.</p>
-                    <div class="social-links">
-                        <a href="#" class="social-link">📘</a>
-                        <a href="#" class="social-link">📷</a>
-                        <a href="#" class="social-link">🐦</a>
-                        <a href="#" class="social-link">💬</a>
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>Subli Market</h4>
+                    <p>Tu tienda de confianza para cuentas premium con garantía total y soporte 24/7.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <svg class="whatsapp-icon" viewBox="0 0 24 24" fill="white">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893A11.821 11.821 0 0020.893 3.106"/>
+                            </svg>
+                        </a>
                     </div>
                 </div>
-                
-                <div class="footer-section">
-                    <h3>Atención al Cliente</h3>
-                    <ul>
-                        <li>📱 WhatsApp: +57 300 123 4567</li>
-                        <li>📧 Email: soporte@sublimarket.com</li>
-                        <li>🕒 Horario: 24/7</li>
-                    </ul>
-                    <a href="#" class="btn btn-primary" style="margin-top: 1rem; display: inline-block;">Contactar WhatsApp</a>
+                <div class="footer-column">
+                    <h4>Atención al Cliente</h4>
+                    <p>WhatsApp: +57 300 123 4567</p>
+                    <p>Email: soporte@sublimarket.com</p>
+                    <p>Horario: 24/7</p>
+                    <a href="#" class="btn btn-primary" style="margin-top: 1rem; display: inline-flex;">
+                        <svg class="whatsapp-icon" viewBox="0 0 24 24">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893A11.821 11.821 0 0020.893 3.106"/>
+                        </svg>
+                        Contactar WhatsApp
+                    </a>
                 </div>
-                
-                <div class="footer-section">
-                    <h3>Enlaces Rápidos</h3>
-                    <ul>
-                        <li><a href="#">Términos y Condiciones</a></li>
-                        <li><a href="#">Política de Privacidad</a></li>
-                        <li><a href="#">Garantías</a></li>
-                        <li><a href="#">Preguntas Frecuentes</a></li>
-                        <li><a href="#">Métodos de Pago</a></li>
-                    </ul>
+                <div class="footer-column">
+                    <h4>Enlaces Rápidos</h4>
+                    <a href="#">Términos y Condiciones</a>
+                    <a href="#">Política de Privacidad</a>
+                    <a href="#">Garantías</a>
+                    <a href="#">Preguntas Frecuentes</a>
+                    <a href="#">Métodos de Pago</a>
                 </div>
-                
-                <div class="footer-section">
-                    <h3>Información</h3>
-                    <ul>
-                        <li>🛡️ Garantía total en productos</li>
-                        <li>⚡ Entrega inmediata</li>
-                        <li>🔒 Pagos 100% seguros</li>
-                        <li>🎯 Soporte especializado</li>
-                        <li>💎 Calidad garantizada</li>
-                    </ul>
+                <div class="footer-column">
+                    <h4>Información</h4>
+                    <p>Garantía total en productos</p>
+                    <p>Entrega inmediata</p>
+                    <p>Pagos 100% seguros</p>
+                    <p>Soporte especializado</p>
+                    <p>Calidad garantizada</p>
                 </div>
             </div>
-            
             <div class="footer-bottom">
                 <p>&copy; 2025 Subli Market. Todos los derechos reservados.</p>
             </div>
@@ -777,47 +694,311 @@
     </footer>
 
     <script>
-        // Filter functionality
+        // Products data
+        const products = [
+            {
+                id: 1,
+                category: 'chatgpt',
+                name: 'ChatGPT Plus',
+                description: 'Acceso prioritario, respuestas más rápidas y funciones avanzadas de la IA más popular del mundo.',
+                priceUSD: 12.99,
+                pricePEN: 49.00,
+                stock: 25
+            },
+            {
+                id: 2,
+                category: 'canva',
+                name: 'Canva Pro',
+                description: 'Plantillas premium, elementos exclusivos, fondo removido y colaboración en equipo para tus diseños.',
+                priceUSD: 7.99,
+                pricePEN: 30.00,
+                stock: 18
+            },
+            {
+                id: 3,
+                category: 'perplexity',
+                name: 'Perplexity Pro',
+                description: 'Motor de búsqueda con IA avanzada, respuestas precisas y acceso a fuentes actualizadas en tiempo real.',
+                priceUSD: 14.99,
+                pricePEN: 56.00,
+                stock: 12
+            },
+            {
+                id: 4,
+                category: 'capcut',
+                name: 'CapCut Pro',
+                description: 'Editor de video profesional con efectos premium, plantillas exclusivas y herramientas avanzadas de edición.',
+                priceUSD: 9.99,
+                pricePEN: 37.00,
+                stock: 30
+            },
+            {
+                id: 5,
+                category: 'gemini',
+                name: 'Gemini Pro',
+                description: 'IA avanzada de Google con capacidades multimodales, análisis de imágenes y respuestas precisas.',
+                priceUSD: 11.99,
+                pricePEN: 45.00,
+                stock: 22
+            },
+            {
+                id: 6,
+                category: 'quillbot',
+                name: 'QuillBot Premium',
+                description: 'Parafraseador avanzado, corrector de gramática y herramientas de escritura profesional con IA.',
+                priceUSD: 8.99,
+                pricePEN: 33.00,
+                stock: 15
+            },
+            {
+                id: 7,
+                category: 'turnitin',
+                name: 'Turnitin',
+                description: 'Detector de plagio profesional y herramientas de integridad académica para estudiantes y educadores.',
+                priceUSD: 15.99,
+                pricePEN: 59.00,
+                stock: 8
+            },
+            {
+                id: 8,
+                category: 'gamma',
+                name: 'Gamma',
+                description: 'Creador de presentaciones con IA, diseños automáticos y plantillas profesionales en segundos.',
+                priceUSD: 10.99,
+                pricePEN: 41.00,
+                stock: 20
+            },
+            {
+                id: 9,
+                category: 'leonardo',
+                name: 'Leonardo IA',
+                description: 'Generador de imágenes con IA, arte digital profesional y herramientas creativas avanzadas.',
+                priceUSD: 13.99,
+                pricePEN: 52.00,
+                stock: 14
+            },
+            {
+                id: 10,
+                category: 'bot',
+                name: 'Bot Seguidores',
+                description: 'Automatización para redes sociales, crecimiento orgánico y herramientas de marketing digital.',
+                priceUSD: 19.99,
+                pricePEN: 75.00,
+                stock: 5
+            },
+            {
+                id: 11,
+                category: 'freepik',
+                name: 'FreePik',
+                description: 'Recursos gráficos premium, vectores, fotos y plantillas para diseñadores y creativos.',
+                priceUSD: 6.99,
+                pricePEN: 26.00,
+                stock: 35
+            },
+            {
+                id: 12,
+                category: 'writehuman',
+                name: 'WriteHuman AI',
+                description: 'Humanizador de texto con IA, bypass de detectores y contenido natural.',
+                priceUSD: 12.99,
+                pricePEN: 48.00,
+                stock: 16
+            },
+            {
+                id: 13,
+                category: 'scribd',
+                name: 'Scribd',
+                description: 'Biblioteca digital ilimitada, libros, audiolibros y documentos académicos.',
+                priceUSD: 9.99,
+                pricePEN: 37.00,
+                stock: 27
+            },
+            {
+                id: 14,
+                category: 'chatgpt',
+                name: 'ChatGPT Team',
+                description: 'Plan empresarial de ChatGPT con funciones colaborativas y mayor límite de uso para equipos.',
+                priceUSD: 24.99,
+                pricePEN: 94.00,
+                stock: 10
+            },
+            {
+                id: 15,
+                category: 'canva',
+                name: 'Canva Teams',
+                description: 'Versión para equipos de Canva con gestión de marca, colaboración avanzada y almacenamiento ilimitado.',
+                priceUSD: 14.99,
+                pricePEN: 56.00,
+                stock: 8
+            },
+            {
+                id: 16,
+                category: 'perplexity',
+                name: 'Perplexity Enterprise',
+                description: 'Solución empresarial con API personalizada, mayor límite de consultas y soporte prioritario.',
+                priceUSD: 29.99,
+                pricePEN: 113.00,
+                stock: 5
+            },
+            {
+                id: 17,
+                category: 'leonardo',
+                name: 'Leonardo Premium',
+                description: 'Plan premium con mayor resolución, estilos exclusivos y generación de imágenes sin límite.',
+                priceUSD: 18.99,
+                pricePEN: 71.00,
+                stock: 12
+            },
+            {
+                id: 18,
+                category: 'freepik',
+                name: 'FreePik Premium Plus',
+                description: 'Plan superior con acceso a colecciones exclusivas, API y licencia comercial extendida.',
+                priceUSD: 12.99,
+                pricePEN: 49.00,
+                stock: 20
+            },
+            {
+                id: 19,
+                category: 'capcut',
+                name: 'CapCut Business',
+                description: 'Plan empresarial con funciones comerciales, plantillas de marca y exportación sin marca de agua.',
+                priceUSD: 19.99,
+                pricePEN: 75.00,
+                stock: 15
+            },
+            {
+                id: 20,
+                category: 'writehuman',
+                name: 'WriteHuman Pro',
+                description: 'Plan profesional con mayor límite de palabras, detección avanzada y soporte para múltiples idiomas.',
+                priceUSD: 19.99,
+                pricePEN: 75.00,
+                stock: 11
+            },
+            {
+                id: 21,
+                category: 'quillbot',
+                name: 'QuillBot Team',
+                description: 'Plan para equipos con gestión centralizada, reportes de uso y funciones de colaboración.',
+                priceUSD: 15.99,
+                pricePEN: 60.00,
+                stock: 13
+            }
+        ];
+
+        // DOM elements
+        const productsGrid = document.getElementById('products-grid');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const mobileFilter = document.getElementById('mobile-filter');
+
+        // State
+        let currentCategory = 'all';
+
+        // Create product card HTML
+        function createProductCard(product) {
+            return `
+                <div class="product-card" data-category="${product.category}">
+                    <div class="product-header">
+                        <div class="product-logo">LOGO</div>
+                        <div class="product-name">${product.name}</div>
+                    </div>
+                    <div class="product-description">
+                        ${product.description}
+                    </div>
+                    <div class="product-footer">
+                        <div class="pricing-box">
+                            <div class="price usd">USD ${product.priceUSD}</div>
+                            <div class="price pen">PEN S/${product.pricePEN}</div>
+                        </div>
+                        <button class="order-btn">
+                            <svg class="whatsapp-icon" viewBox="0 0 24 24">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893A11.821 11.821 0 0020.893 3.106"/>
+                            </svg>
+                            Realizar pedido
+                        </button>
+                    </div>
+                    <div class="stock-indicator">
+                        <svg class="stock-icon" viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                        Stock: ${product.stock}
+                    </div>
+                </div>
+            `;
+        }
+
+        // Filter products
         function filterProducts(category) {
-            const products = document.querySelectorAll('.product-card');
-            const filterItems = document.querySelectorAll('.filter-item');
+            const filteredProducts = category === 'all' ? products : products.filter(p => p.category === category);
             
-            // Update active filter
-            filterItems.forEach(item => item.classList.remove('active'));
-            document.querySelector(`[onclick="filterProducts('${category}')"]`).classList.add('active');
+            // Clear grid
+            productsGrid.innerHTML = '';
             
-            // Show/hide products
-            products.forEach(product => {
-                if (category === 'all' || product.getAttribute('data-category') === category) {
-                    product.style.display = 'block';
-                } else {
-                    product.style.display = 'none';
-                }
+            // Update grid columns
+            if (category === 'all') {
+                productsGrid.className = 'products-grid';
+            } else {
+                productsGrid.className = 'products-grid two-columns';
+            }
+            
+            // Add filtered products
+            filteredProducts.forEach(product => {
+                productsGrid.innerHTML += createProductCard(product);
             });
         }
 
-        // Mobile filter toggle
-        function toggleMobileFilters() {
-            const content = document.getElementById('mobileFilters');
-            const toggle = document.querySelector('.mobile-filter-toggle');
-            
-            if (content.classList.contains('show')) {
-                content.classList.remove('show');
-                toggle.textContent = 'Filtrar Productos ▼';
-            } else {
-                content.classList.add('show');
-                toggle.textContent = 'Filtrar Productos ▲';
-            }
-        }
+        // Handle filter button clicks
+        filterButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                e.target.classList.add('active');
+                
+                // Get category and filter products
+                const category = e.target.dataset.category;
+                currentCategory = category;
+                filterProducts(category);
+                
+                // Update mobile filter
+                mobileFilter.value = category;
+            });
+        });
 
-        // Close mobile filters when clicking outside
-        document.addEventListener('click', function(event) {
-            const mobileFilters = document.querySelector('.mobile-filters');
-            const content = document.getElementById('mobileFilters');
+        // Handle mobile filter change
+        mobileFilter.addEventListener('change', (e) => {
+            const category = e.target.value;
+            currentCategory = category;
             
-            if (!mobileFilters.contains(event.target) && content.classList.contains('show')) {
-                content.classList.remove('show');
-                document.querySelector('.mobile-filter-toggle').textContent = 'Filtrar Productos ▼';
+            // Update desktop filters
+            filterButtons.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.category === category) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            filterProducts(category);
+        });
+
+        // Initialize products on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            filterProducts('all');
+        });
+
+        // Handle order button clicks
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('order-btn') || e.target.closest('.order-btn')) {
+                const productCard = e.target.closest('.product-card');
+                const productName = productCard.querySelector('.product-name').textContent;
+                
+                // You can replace this with actual WhatsApp integration
+                const message = `Hola, estoy interesado en comprar ${productName}. ¿Podrían ayudarme?`;
+                const whatsappURL = `https://wa.me/573001234567?text=${encodeURIComponent(message)}`;
+                
+                window.open(whatsappURL, '_blank');
             }
         });
     </script>
